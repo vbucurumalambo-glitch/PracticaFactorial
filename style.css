@@ -41,3 +41,8 @@ button:hover {
 li {
   margin-bottom: 4px;
 }
+
+#resultado,
+#historial li {
+  word-break: break-all;
+}

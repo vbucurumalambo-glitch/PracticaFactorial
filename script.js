@@ -11,10 +11,11 @@ const btnProbar = document.getElementById("btnProbar");
 const resultado = document.getElementById("resultado");
 const historial = document.getElementById("historial");
 
+// Usa BigInt para que el resultado sea exacto, sin notación científica
 function calcularFactorial(n) {
-  let factorial = 1;
+  let factorial = 1n;
 
-  for (let i = 1; i <= n; i++) {
+  for (let i = 1n; i <= BigInt(n); i++) {
     factorial = factorial * i;
   }
 
@@ -50,14 +51,14 @@ function probarNumero() {
     return;
   }
 
-  if (numero > 170) {
-    resultado.textContent = "Ese número es muy grande, el resultado no cabe en JavaScript.";
-    console.log("Error: número mayor a 170");
+  if (numero > 1000) {
+    resultado.textContent = "Ese número es muy grande, escribe uno hasta 1000.";
+    console.log("Error: número mayor a 1000");
     return;
   }
 
   const factorial = calcularFactorial(numero);
-  const mensaje = numero + "! = " + factorial;
+  const mensaje = numero + "! = " + factorial.toString();
 
   console.log(mensaje);
   resultado.textContent = mensaje;
@@ -70,6 +71,6 @@ function probarNumero() {
 btnProbar.addEventListener("click", probarNumero);
 
 // Pruebas en consola
-console.log("4! =", calcularFactorial(4));
-console.log("5! =", calcularFactorial(5));
-console.log("0! =", calcularFactorial(0));
+console.log("4! =", calcularFactorial(4).toString());
+console.log("5! =", calcularFactorial(5).toString());
+console.log("0! =", calcularFactorial(0).toString());
